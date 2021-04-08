@@ -3,7 +3,7 @@
 let aiNum = null
 function newAI()
 {aiNum = Math.floor((Math.random()*3)+1)}
-function computerPlay() {
+/*function computerPlay() {
     if (aiNum == 1){
         console.log("Rock")
     } 
@@ -13,12 +13,17 @@ function computerPlay() {
     else {
         console.log("Scissors")
     }
-}
+}*/
 //let playerType = prompt("Rock, Paper or Scissors?").toLowerCase();
 let playerType = '0'
 function selectRoll(){
     playerType = prompt("Rock, Paper or Scissors?").toLowerCase();
 }
+
+let restart = "0";
+let winStat = 0;
+let lossStat = 0;
+let tieStat = 0;
 function findWinner(){
 switch(playerType){
     case '0':
@@ -26,28 +31,72 @@ switch(playerType){
         break;
     case 'rock':
         if (aiNum == 1){
-            console.log("You Tied!")
-        } else if (aiNum == 2) {console.log("You Lost!")}
-        else {console.log("You Won!")}
+            console.log("You Tied!");
+            tieStat++
+        } else if (aiNum == 2) {
+            console.log("You Lost!");
+            lossStat++
+    }
+        else {
+            console.log("You Won!")
+            winStat++
+    }
     break;
     case 'scissors':
         if (aiNum == 1){
             console.log("You Lost!")
-        } else if (aiNum == 2) {console.log("You Won!")}
-        else {console.log("You Tied!")}
+            lossStat++
+        } else if (aiNum == 2) {
+            console.log("You Won!")
+            winStat++
+        }
+        else {
+            console.log("You Tied!")
+            tieStat++
+        }
     break;
     case 'paper':
         if (aiNum == 1){
             console.log("You Won!")
-        } else if (aiNum == 2) {console.log("You Tied!")}
-        else {console.log("You Lost!")}
+            winStat++
+        } else if (aiNum == 2) {
+            console.log("You Tied!")
+            tieStat++
+        }
+        else {
+            console.log("You Lost!")
+            lossStat++
+        }
     break;
     default:
     console.log("That is not an option.")
 }}
+function reportScore(){
+    console.log(winStat + " W - " + lossStat + " L - " + tieStat + " T")
+}
 function round(){
     newAI()
     selectRoll()
     findWinner()
+    reportScore()
 }
-round()
+function game(){
+    for (let roundCount = 0; roundCount < 5; roundCount++){
+        round()  
+    }
+    playAgain()
+}
+game()
+
+function playAgain(){
+    restart = prompt("Play Again?").toLowerCase();
+    switch(restart){
+        case "0":
+            break;
+        case "yes":
+            game()
+            break;
+        default:
+            console.log("See you next time!")
+    }
+}
