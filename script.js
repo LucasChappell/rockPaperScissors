@@ -1,11 +1,9 @@
-
-//let aiNum = Math.floor((Math.random()*3)+1)
 let aiNum = null
 function newAI()
 {aiNum = Math.floor((Math.random()*3)+1)}
 /*function computerPlay() {
     if (aiNum == 1){
-        console.log("Rock")
+        console.log("Rock"f)
     } 
     else if (aiNum == 2){
         console.log("Paper")
@@ -14,11 +12,28 @@ function newAI()
         console.log("Scissors")
     }
 }*/
-//let playerType = prompt("Rock, Paper or Scissors?").toLowerCase();
+let rockButton = document.getElementById("rock")
 let playerType = '0'
+let scissorsButton = document.getElementById("scissors")
+let paperButton = document.getElementById("paper")
+let rockIsClicked = false;
+function clickHandler(){
+    rockIsClicked = true;
+    playerType = 'rock'
+}
+rockButton.addEventListener("click", clickHandler);
 function selectRoll(){
     playerType = prompt("Rock, Paper or Scissors?").toLowerCase();
+   /*if (rockIsClicked = true){
+       playerType = 'rock'
+   }
+   if (playerType = '0'){
+       setTimeout(function(){findWinner()},5000);
+   } else {findWinner()}*/
+
 }
+
+
 
 let restart = "0";
 let winStat = 0;
@@ -86,7 +101,7 @@ function game(){
     }
     playAgain()
 }
-game()
+//game()
 
 function playAgain(){
     restart = prompt("Play Again?").toLowerCase();
