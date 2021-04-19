@@ -47,6 +47,7 @@ cursor: pointer;
     display: inline-block;
     padding: 5px;
     z-index: 100;
+    outline: none;
 }
 #background{
     position: absolute;
@@ -68,6 +69,7 @@ cursor: pointer;
     display: inline-block;
     padding: 5px;
     margin: 45px;
+    outline: none;
 }
 #scissors{
     color: #00cc00;
@@ -78,7 +80,7 @@ cursor: pointer;
     border-width: 2px;
     display: inline-block;
     padding: 5px;
-    
+    outline: none;
 }
 
 
